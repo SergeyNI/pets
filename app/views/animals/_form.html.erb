@@ -1,0 +1,62 @@
+<div class="columns">
+<div class="column"> 
+<%= form_with(model: animal, local: true, multipart: true) do |form| %>
+  <% if animal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+
+      <ul>
+        <% animal.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <div class="control">
+      <%= form.label :name,'Кличка',class: "label" %>
+      <%= form.text_field :name, class:'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= form.label :kinde,'Що це за тварина', class: "label" %>
+    <div class="control">
+      <div class="select is-primary">
+       
+        <%= form.select(:kinde, [['Собака', 1], ['Кіт', 2]]) %>
+      </div>
+    </div>
+  </div>
+  <div class="field"> 
+    <div class="file has-name is-fullwidth">
+      <label class="file-label">
+        <input class="file-input" type="file" name="avatar">
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Виберіть файл  - фото тваринки…
+          </span>             
+        </span>
+        
+        <span class="file-name">
+            
+        </span>
+      </label>
+    </div>
+  </div>
+  
+
+  <div class="field">
+    <div class="control">
+      <%= form.submit "Створити запис про тварину",:class => 'button is-primary' %>
+    </div>
+  </div>
+   
+  
+<% end %>
+</div>
+</div>
