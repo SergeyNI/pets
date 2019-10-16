@@ -1,8 +1,12 @@
 <div class="columns">
 <div class="column"> 
+  <div class="card">
+    <div class="card-content">
+
 <%= form_with(model: animal, local: true, multipart: true) do |form| %>
   <% if animal.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="notification is-danger">
+      <button class="delete"></button>
       <h2><%= pluralize(animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
 
       <ul>
@@ -30,7 +34,7 @@
     </div>
   </div>
   <div class="field"> 
-    <div class="file has-name is-fullwidth">
+    <div class="file has-name is-fullwidth " id="file-js">
       <label class="file-label">
         <input class="file-input" type="file" name="avatar">
         <span class="file-cta">
@@ -58,5 +62,7 @@
    
   
 <% end %>
+</div>
+</div>
 </div>
 </div>
